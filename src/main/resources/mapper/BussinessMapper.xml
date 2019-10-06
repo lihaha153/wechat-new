@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anche.wechatnew.DAO.BussinessMapper">
+
+    <select id="getYwyyListByYwlx" resultType="java.util.HashMap">
+        select oi_value as msg,oi_code as code from yy_sys_code
+        where oi_name = '查验业务类型'
+        and  oi_code like concat(concat(#{ywlx,jdbcType=VARCHAR}),'%')
+    </select>
+
+    <select id="getAllStation" resultType="com.anche.wechatnew.model.admin.SysOrganization">
+        select organ,organName,phone,address,linker,lat,lng from yy_sys_organ where isUse = '1'
+    </select>
+
+</mapper>

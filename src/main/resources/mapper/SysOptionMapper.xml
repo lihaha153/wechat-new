@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anche.wechatnew.DAO.SysOptionMapper">
+
+    <select id="getCodeByKindAndName" resultType="java.lang.String">
+        select option_code from yy_sys_options
+        where option_kind = #{option_kind,jdbcType=VARCHAR}
+        and option_name = #{option_name,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateCodeByKindAndName" parameterType="com.anche.wechatnew.model.admin.SysOption">
+        update yy_sys_options
+        <set>
+            <if test="option_code != null">
+                option_code = #{option_code,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where option_kind = #{option_kind,jdbcType=VARCHAR} and option_name = #{option_name,jdbcType=VARCHAR}
+    </update>
+</mapper>
